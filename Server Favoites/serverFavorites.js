@@ -12,12 +12,6 @@ var server = http.createServer(handleRequest);
 function handleRequest(req, res) {
 
     switch (path) {
-        case "/home":
-            return fs.readFile(__dirname + "/home.html", function(err, data) {
-                res.writeHead(200, { "Content-Type": "text/html" });
-                res.end(data);
-        });
-
         case "/food":
         return fs.readFile(__dirname + "/food.html", function(err, data) {
             res.writeHead(200, { "Content-Type": "text/html" });
@@ -35,6 +29,13 @@ function handleRequest(req, res) {
             res.writeHead(200, { "Content-Type": "text/html" });
             res.end(data);
         });
+
+        default:
+        return fs.readFile(__dirname + "/home.html", function(err, data) {
+            res.writeHead(200, { "Content-Type": "text/html" });
+            res.end(data);
+        });
+
     }
 }
 // Starts our server
